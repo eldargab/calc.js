@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var calc = require('../lib/calc')()
+
+function repl () {
+    process.stdout.write('> ');
+    process.stdin.setEncoding('utf8');
+    process.stdin.once('data', function (exp) {
+        exp = exp.trim()
+        if (exp == 'exit') process.exit()
+        if (exp) {
+            try {
+                console.log('\033[33m' + calc(exp) + '\033[39m')
+            }
+            catch (e) {
+                printError(e, exp)
+            }
+        }
+        repl()
+    }).resume()
+}
+
+function printError (e, exp) {
+    if (e.pos == null) return console.log(e.message)
+    var pos = e.pos
+    console.log('\033[31m' +e.message + '\033[39m')
+    console.log(padLeft(exp.substr(0, pos) + (exp[pos] || '') + (exp.substr(pos + 1) || ''), 2))
+    console.log(padLeft('^', pos + 2))
+}
+
+function padLeft (str, pos) {
+    var s = ''
+    for (var i = 0; i < pos; i++) {
+        s += ' '
+    }
+    return s + str
+}
+
+repl()

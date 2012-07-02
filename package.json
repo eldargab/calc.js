@@ -1,0 +1,16 @@
+{
+  "name": "calc.js",
+  "version": "0.0.0",
+  "description": "Toy CLI calculator. Implementation of Pratt's top down operator precedence parsing technique.",
+  "main": "lib/calc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eldargab/calc.js"
+  },
+  "author": "Eldar Gabdullin <eldargab@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}
