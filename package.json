@@ -12,5 +12,8 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*"
+  },
+  "bin": {
+    "calc": "bin/calc"
   }
 }
